@@ -1,6 +1,7 @@
 #print("Hello, world!")
 import gspread
 from google.oauth2.service_account import Credentials
+import pandas as pd
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -17,4 +18,11 @@ Sheet1 = SHEET.worksheet('Sheet1')
 
 data = Sheet1.get_all_values()
 
-print(data)
+#data = Sheet1.get_all_values()
+
+# First row = headers
+df = pd.DataFrame(data[1:], columns=data[0])
+
+print(df.head(50))
+
+#print(data)
