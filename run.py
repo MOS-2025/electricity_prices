@@ -1,7 +1,8 @@
-#print("Hello, world!")
+# print("Hello, world!")
 import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
+import matplotlib.pyplot as plt
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -18,11 +19,23 @@ Sheet1 = SHEET.worksheet('Sheet1')
 
 data = Sheet1.get_all_values()
 
-#data = Sheet1.get_all_values()
+# data = Sheet1.get_all_values()
 
 # First row = headers
 df = pd.DataFrame(data[1:], columns=data[0])
 
-print(df.head(50))
+print(df)
 
-#print(data)
+cheapest = df.loc[df["Price perKwhour"].idxmin()]
+print(cheapest)
+
+expensive = df.loc[df["Price perKwhour"].idxmax()]
+print(expensive)
+
+df["Date and Time"] = pd.to_datetime(df["Date and Time"])
+
+jan1 = df[df["Date and Time"].dt.date == pd.to_datetime("2026-01-01").date()]
+
+print(jan1)
+
+# print(data)
