@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/MOS-2025/electricity_prices/issues"
   },
-  "homepage": "https://github.com/MOS-2025/electricity_prices#readme"
+  "homepage": "https://github.com/MOS-2025/electricity_prices#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
