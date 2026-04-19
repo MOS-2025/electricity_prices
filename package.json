@@ -1,24 +1,23 @@
 {
-  "name": "electricity_prices",
+  "name": "terminal",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MOS-2025/electricity_prices.git"
+    "url": "git+https://github.com/lechien73/terminal.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/MOS-2025/electricity_prices/issues"
+    "url": "https://github.com/lechien73/terminal/issues"
   },
-  "homepage": "https://github.com/MOS-2025/electricity_prices#readme",
+  "homepage": "https://github.com/lechien73/terminal#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "node-static": "^0.7.11",
+    "node-pty": "^0.10.1",
+    "total4": "^0.0.45"
   }
 }

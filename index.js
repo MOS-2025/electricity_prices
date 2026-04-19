@@ -1,23 +1,30 @@
-const express = require('express');
-const app = express();
+// ===================================================
+// Total.js start script
+// https://www.totaljs.com
+// ===================================================
 
-// Use the port Heroku provides, or default to 3000 locally
-const PORT = process.env.PORT || 3000;
+const options = {};
 
-// Middleware (optional)
-app.use(express.json());
+// options.ip = '127.0.0.1';
+options.port = parseInt(process.env.PORT);
+// options.unixsocket = require('path').join(require('os').tmpdir(), 'app_name');
+// options.config = { name: 'Total.js' };
+// options.sleep = 3000;
+// options.inspector = 9229;
+// options.watch = ['private'];
+// options.livereload = 'https://yourhostname';
 
-// Home route
-app.get('/', (req, res) => {
-  res.send('Hello, Heroku! 🚀');
-});
+// Enables cluster:
+// options.cluster = 'auto';
+// options.cluster_limit = 10; // max 10. threads (works only with "auto" scaling)
 
-// Example API route
-app.get('/api', (req, res) => {
-  res.json({ message: 'This is your API response' });
-});
+// Enables threads:
+// options.cluster = 'auto';
+// options.cluster_limit = 10; // max 10. threads (works only with "auto" scaling)
+// options.timeout = 5000;
+// options.threads = '/api/';
+// options.logs = 'isolated';
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+var type = process.argv.indexOf('--release', 1) !== -1 || process.argv.indexOf('release', 1) !== -1 ? 'release' : 'debug';
+// require('total4/' + type)(options);
+require('total4').http('release', options);
