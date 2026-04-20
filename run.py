@@ -1,4 +1,4 @@
-# print("Welcome to the electricity prices checker, Data for January to April 2026 can be viewed to determine the cheapest and most expensive electricity prices !")
+print("Welcome to the electricity prices checker, Data for January to April 2026 can be viewed to determine the cheapest and most expensive electricity prices !")
 import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
@@ -6,8 +6,6 @@ import matplotlib.pyplot as plt
 import os
 import json
 
-#creds_dict = json.loads(os.environ["GOOGLE_CREDS"])
-#CREDS = Credentials.from_service_account_info(creds_dict)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -24,9 +22,7 @@ Sheet1 = SHEET.worksheet('Sheet1')
 
 data = Sheet1.get_all_values()
 
-# data = Sheet1.get_all_values()
 
-# First row = headers
 df = pd.DataFrame(data[1:], columns=data[0])
 
 print(df)
@@ -43,4 +39,3 @@ jan1 = df[df["Date and Time"].dt.date == pd.to_datetime("2026-01-01").date()]
 
 print(jan1)
 
-# print(data)
