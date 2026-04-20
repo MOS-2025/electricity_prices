@@ -19,7 +19,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Electricity_Prices')
 
 Sheet1 = SHEET.worksheet('Sheet1')
-
 data = Sheet1.get_all_values()
 
 
@@ -31,7 +30,6 @@ df["Price perKwhour"] = pd.to_numeric(df["Price perKwhour"], errors="coerce")
 df["Date and Time"] = pd.to_datetime(df["Date and Time"], dayfirst=True, errors="coerce")
 
 #print(df)
-
 
 # User input
 user_input = input("Enter a date and time (dd/mm/yyyy hh:mm), for example 01/01/2026 17:00: ")
@@ -52,3 +50,12 @@ except ValueError:
     print("\nInvalid format. Please enter the date and time as dd/mm/yyyy hh:mm")
 
 
+# Cheapest and most expensive
+cheapest = df.loc[df["Price perKwhour"].idxmin()]
+most_expensive = df.loc[df["Price perKwhour"].idxmax()]
+
+print("\nCheapest electricity price:")
+print(cheapest[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+
+print("\nMost expensive electricity price:")
+print(most_expensive[["Week No", "Date and Time", "Price perKwhour"]].to_string())
