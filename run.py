@@ -32,17 +32,23 @@ df["Date and Time"] = pd.to_datetime(df["Date and Time"], dayfirst=True, errors=
 
 #print(df)
 
-cheapest = df.loc[df["Price perKwhour"].idxmin()]
-print(cheapest)
 
-expensive = df.loc[df["Price perKwhour"].idxmax()]
-print(expensive)
+# User input
+user_input = input("Enter a date and time (dd/mm/yyyy hh:mm), for example 01/01/2026 17:00: ")
 
-#print(df["Price perKwhour"].max())
+try:
+    selected_datetime = pd.to_datetime(user_input, format="%d/%m/%Y %H:%M")
 
-#df["Date and Time"] = pd.to_datetime(df["Date and Time"])
+    # Find matching row
+    result = df[df["Date and Time"] == selected_datetime]
 
-#jan1 = df[df["Date and Time"].dt.date == pd.to_datetime("2026-01-01").date()]
+    if not result.empty:
+        print("\nElectricity price for selected date and time:")
+        print(result[["Week No", "Date and Time", "Price perKwhour"]])
+    else:
+        print("\nNo data found for that date and time.")
 
-#print(jan1)
+except ValueError:
+    print("\nInvalid format. Please enter the date and time as dd/mm/yyyy hh:mm")
+
 
