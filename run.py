@@ -1,4 +1,4 @@
-# print("Hello, world!")
+# print("Welcome to the electricity prices checker, Data for January to April 2026 can be viewed to determine the cheapest and most expensive electricity prices !")
 import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import os
 import json
 
-creds_dict = json.loads(os.environ["GOOGLE_CREDS"])
-CREDS = Credentials.from_service_account_info(creds_dict)
+#creds_dict = json.loads(os.environ["GOOGLE_CREDS"])
+#CREDS = Credentials.from_service_account_info(creds_dict)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -15,7 +15,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-#CREDS = Credentials.from_service_account_file('creds.json')
+CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Electricity_Prices')
