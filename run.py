@@ -25,7 +25,12 @@ data = Sheet1.get_all_values()
 
 df = pd.DataFrame(data[1:], columns=data[0])
 
-print(df)
+
+
+df["Price perKwhour"] = pd.to_numeric(df["Price perKwhour"], errors="coerce")
+df["Date and Time"] = pd.to_datetime(df["Date and Time"], dayfirst=True, errors="coerce")
+
+#print(df)
 
 cheapest = df.loc[df["Price perKwhour"].idxmin()]
 print(cheapest)
@@ -33,9 +38,11 @@ print(cheapest)
 expensive = df.loc[df["Price perKwhour"].idxmax()]
 print(expensive)
 
-df["Date and Time"] = pd.to_datetime(df["Date and Time"])
+#print(df["Price perKwhour"].max())
 
-jan1 = df[df["Date and Time"].dt.date == pd.to_datetime("2026-01-01").date()]
+#df["Date and Time"] = pd.to_datetime(df["Date and Time"])
 
-print(jan1)
+#jan1 = df[df["Date and Time"].dt.date == pd.to_datetime("2026-01-01").date()]
+
+#print(jan1)
 
