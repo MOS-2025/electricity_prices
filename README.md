@@ -2,6 +2,11 @@
 
 A Python-based command-line application that connects to a Google Sheet to analyze electricity prices.
 It allows users to query electricity prices for a specific date and time, and calculates key insights such as the cheapest, most expensive, and average prices.
+The data is collected every 30 minutes starting on 01/01/2026 00:30 until 01/07/2026 23:30.
+
+
+<img width="462" height="612" alt="image" src="https://github.com/user-attachments/assets/0155c057-7c48-439a-bcc6-5672b4688b61" />
+
 
 ---
 
@@ -25,6 +30,15 @@ It allows users to query electricity prices for a specific date and time, and ca
 * **Repository:** https://github.com/MOS-2025/
 
 * <img width="1402" height="837" alt="image" src="https://github.com/user-attachments/assets/447f965c-da04-467e-8b9c-e56c048f2138" />
+
+
+---
+
+
+## 🔗 Flow Chart
+
+
+* <img width="596" height="895" alt="image" src="https://github.com/user-attachments/assets/5ceccd57-5166-4d8f-9c7a-beac10a0ada4" />
 
 
 ---
@@ -116,10 +130,12 @@ The script prints results in the terminal and updates the Google Sheet:
 
 ## 🚀 Future Enhancements
 
-* Add charts and data visualization
+* Add charts using miniplot for data visualization
 * Build a web interface
 * Filter by date ranges or weeks
 * Integrate live electricity price APIs
+* Upload CSV file with data for entire
+* Compare cheapest prices against peak wind generation
 
 ---
 
@@ -134,6 +150,7 @@ The script prints results in the terminal and updates the Google Sheet:
 ## 🧪 Testing & Validation
 
 * Passed through PEP8 Linter with no issues
+* <img width="1886" height="843" alt="image" src="https://github.com/user-attachments/assets/6571c741-c2b2-44c5-aeab-30fa7dc6a959" />
 * Tested locally in terminal
 * Verified Google Sheets integration
 
