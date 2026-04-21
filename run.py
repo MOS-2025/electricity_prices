@@ -2,6 +2,28 @@ import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
 
+
+def calculate_statistics(df):
+    """
+    Calculate cheapest, most expensive, and average electricity price.
+    """
+    if df["Price perKwhour"].isnull().all():
+        raise ValueError("No valid price data available.")
+
+    cheapest = df.loc[df["Price perKwhour"].idxmin()]
+    most_expensive = df.loc[df["Price perKwhour"].idxmax()]
+    average = df["Price perKwhour"].mean()
+
+    return cheapest, most_expensive, average
+
+
+def find_price(df, selected_datetime):
+    """
+    Find electricity price for a specific date and time.
+    """
+    return df[df["Date and Time"] == selected_datetime]
+
+
 print("Welcome to the electricity prices checker!")
 
 
@@ -34,7 +56,7 @@ try:
     selected_datetime = pd.to_datetime(user_input, format="%d/%m/%Y %H:%M")
 
     # Find matching row
-    result = df[df["Date and Time"] == selected_datetime]
+    result = find_price(df, selected_datetime)
 
     if not result.empty:
         print("\nElectricity price for selected date and time:")
@@ -44,19 +66,6 @@ try:
 
 except ValueError:
     print("\nInvalid format. Enter the date and time as dd/mm/yyyy hh:mm")
-
-def calculate_statistics(df):
-    """
-    Calculate cheapest, most expensive, and average electricity price.
-    """
-    if df["Price perKwhour"].isnull().all():
-        raise ValueError("No valid price data available.")
-
-    cheapest = df.loc[df["Price perKwhour"].idxmin()]
-    most_expensive = df.loc[df["Price perKwhour"].idxmax()]
-    average = df["Price perKwhour"].mean()
-
-    return cheapest, most_expensive, average
 
 try:
     cheapest, most_expensive, average = calculate_statistics(df)
