@@ -2,6 +2,11 @@
 
 A Python-based command-line application that connects to a Google Sheet to analyze electricity prices.
 It allows users to query electricity prices for a specific date and time, and calculates key insights such as the cheapest, most expensive, and average prices.
+The data is collected every 30 minutes starting on 01/01/2026 00:30 until 01/07/2026 23:30.
+
+
+<img width="462" height="612" alt="image" src="https://github.com/user-attachments/assets/0155c057-7c48-439a-bcc6-5672b4688b61" />
+
 
 ---
 
