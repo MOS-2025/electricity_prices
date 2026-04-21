@@ -48,7 +48,7 @@ except ValueError:
     print("\nInvalid format. Enter the date and time as dd/mm/yyyy hh:mm")
 
 
-# Cheapest and most expensive
+# Cheapest and most expensive and average price
 cheapest = df.loc[df["Price perKwhour"].idxmin()]
 most_expensive = df.loc[df["Price perKwhour"].idxmax()]
 average = df["Price perKwhour"].mean()
@@ -61,3 +61,18 @@ print(most_expensive[["Week No", "Date and Time", "Price perKwhour"]].to_string(
 
 print("\nAverage electricity price:")
 print(average)
+
+
+# Send result back to Google Sheet
+results = [
+    ["Metric", "Week No", "Date and Time", "Price perKwhour"],
+    [
+        "Cheapest",
+        cheapest["Week No"],
+        cheapest["Date and Time"].strftime("%d/%m/%Y %H:%M") if pd.notnull(cheapest["Date and Time"]) else "",
+        cheapest["Price perKwhour"]
+    ],
+]
+Sheet1.update(range_name="F2:I5", values=results)
+
+print("\nResults have been written back to the Google Sheet.")
