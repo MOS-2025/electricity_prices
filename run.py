@@ -1,10 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
-#from matplotlib.pylab import mean
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
-import json
+
 
 print("Welcome to the electricity prices checker!")
 
@@ -72,6 +70,13 @@ results = [
         cheapest["Date and Time"].strftime("%d/%m/%Y %H:%M") if pd.notnull(cheapest["Date and Time"]) else "",
         cheapest["Price perKwhour"]
     ],
+    [
+        "Most Expensive",
+        most_expensive["Week No"],
+        most_expensive["Date and Time"].strftime("%d/%m/%Y %H:%M") if pd.notnull(most_expensive["Date and Time"]) else "",
+        most_expensive["Price perKwhour"]
+    ],
+    ["Average", "", "", average]
 ]
 Sheet1.update(range_name="F2:I5", values=results)
 
