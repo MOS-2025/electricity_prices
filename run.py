@@ -23,6 +23,13 @@ def find_price(df, selected_datetime):
     """
     return df[df["Date and Time"] == selected_datetime]
 
+def get_user_input():
+    """
+    Get user input and remove extra spaces.
+    """
+    return input(
+        "Enter (dd/mm/yyyy hh:mm),Example 01/01/2026 17:00: "
+    ).strip()
 
 print("Welcome to the electricity prices checker!")
 
@@ -50,7 +57,7 @@ df["Date and Time"] = pd.to_datetime(
 )
 
 # User input
-user_input = input("Enter (dd/mm/yyyy hh:mm),Example 01/01/2026 17:00: ")
+user_input = get_user_input()
 
 try:
     selected_datetime = pd.to_datetime(user_input, format="%d/%m/%Y %H:%M")
