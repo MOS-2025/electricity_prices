@@ -34,6 +34,15 @@ The data is collected every 30 minutes starting on 01/01/2026 00:30 until 01/07/
 
 ---
 
+
+## 🔗 Flow Chart
+
+
+* <img width="596" height="895" alt="image" src="https://github.com/user-attachments/assets/5ceccd57-5166-4d8f-9c7a-beac10a0ada4" />
+
+
+---
+
 ## 🔑 Google Sheets Setup
 
 1. Go to Google Cloud Console
@@ -121,10 +130,12 @@ The script prints results in the terminal and updates the Google Sheet:
 
 ## 🚀 Future Enhancements
 
-* Add charts and data visualization
+* Add charts using miniplot for data visualization
 * Build a web interface
 * Filter by date ranges or weeks
 * Integrate live electricity price APIs
+* Upload CSV file with data for entire
+* Compare cheapest prices against peak wind generation
 
 ---
 
