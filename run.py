@@ -45,11 +45,24 @@ try:
 except ValueError:
     print("\nInvalid format. Enter the date and time as dd/mm/yyyy hh:mm")
 
+def calculate_statistics(df):
+    """
+    Calculate cheapest, most expensive, and average electricity price.
+    """
+    if df["Price perKwhour"].isnull().all():
+        raise ValueError("No valid price data available.")
 
-# Cheapest and most expensive and average price
-cheapest = df.loc[df["Price perKwhour"].idxmin()]
-most_expensive = df.loc[df["Price perKwhour"].idxmax()]
-average = df["Price perKwhour"].mean()
+    cheapest = df.loc[df["Price perKwhour"].idxmin()]
+    most_expensive = df.loc[df["Price perKwhour"].idxmax()]
+    average = df["Price perKwhour"].mean()
+
+    return cheapest, most_expensive, average
+
+try:
+    cheapest, most_expensive, average = calculate_statistics(df)
+except ValueError as e:
+    print(e)
+    exit()
 
 print("\nCheapest electricity price:")
 print(cheapest[["Week No", "Date and Time", "Price perKwhour"]].to_string())
