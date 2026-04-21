@@ -24,6 +24,9 @@ It allows users to query electricity prices for a specific date and time, and ca
 * **Live Site:** https://mos-2025.github.io/
 * **Repository:** https://github.com/MOS-2025/
 
+* <img width="1402" height="837" alt="image" src="https://github.com/user-attachments/assets/447f965c-da04-467e-8b9c-e56c048f2138" />
+
+
 ---
 
 ## 🔑 Google Sheets Setup
