@@ -23,7 +23,9 @@ data = Sheet1.get_all_values()
 df = pd.DataFrame(data[1:], columns=data[0])
 
 df["Price perKwhour"] = pd.to_numeric(df["Price perKwhour"], errors="coerce")
-df["Date and Time"] = pd.to_datetime(df["Date and Time"], dayfirst=True, errors="coerce")
+df["Date and Time"] = pd.to_datetime(
+    df["Date and Time"], dayfirst=True, errors="coerce"
+)
 
 # User input
 user_input = input("Enter (dd/mm/yyyy hh:mm),Example 01/01/2026 17:00: ")
@@ -62,18 +64,26 @@ print(average)
 
 
 # Send result back to Google Sheet
+cheapest_datetime = (
+    cheapest["Date and Time"].strftime("%d/%m/%Y %H:%M")
+    if pd.notnull(cheapest["Date and Time"]) else ""
+)
+most_expensive_datetime = (
+    most_expensive["Date and Time"].strftime("%d/%m/%Y %H:%M")
+    if pd.notnull(most_expensive["Date and Time"]) else ""
+)
 results = [
     ["Metric", "Week No", "Date and Time", "Price perKwhour"],
     [
         "Cheapest",
         cheapest["Week No"],
-        cheapest["Date and Time"].strftime("%d/%m/%Y %H:%M") if pd.notnull(cheapest["Date and Time"]) else "",
+        cheapest_datetime,
         cheapest["Price perKwhour"]
     ],
     [
         "Most Expensive",
         most_expensive["Week No"],
-        most_expensive["Date and Time"].strftime("%d/%m/%Y %H:%M") if pd.notnull(most_expensive["Date and Time"]) else "",
+        most_expensive_datetime,
         most_expensive["Price perKwhour"]
     ],
     ["Average", "", "", average]
