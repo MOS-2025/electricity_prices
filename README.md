@@ -7,13 +7,137 @@ It allows users to query electricity prices for a specific date and time, and ca
 
 ## 📌 Features
 
-- Connects to Google Sheets using a **service account**
-- Reads and processes data using **pandas**
-- User input to check electricity price at a specific date/time
-- Automatically calculates:
-  - Cheapest price
-  - Most expensive price
-  - Average price
-- Writes results back to the Google Sheet
+* Connects to Google Sheets using a **service account**
+* Reads and processes data using **pandas**
+* User input to check electricity price at a specific date/time
+* Automatically calculates:
+
+  * Cheapest price
+  * Most expensive price
+  * Average price
+* Writes results back to the Google Sheet
 
 ---
+
+## 🔗 Live Project
+
+* **Live Site:** https://mos-2025.github.io/
+* **Repository:** https://github.com/MOS-2025/
+
+---
+
+## 🔑 Google Sheets Setup
+
+1. Go to Google Cloud Console
+2. Create a new project
+3. Enable:
+
+   * Google Sheets API
+   * Google Drive API
+4. Create a **Service Account**
+5. Download the credentials file and rename it to:
+
+```bash
+creds.json
+```
+
+6. Share your Google Sheet with the service account email
+
+---
+
+## 📊 Expected Google Sheet Format
+
+**Sheet name:** `Sheet1`
+
+**Columns required:**
+
+* Week No
+* Date and Time (format: `dd/mm/yyyy hh:mm`)
+* Price per KWh
+
+---
+
+## ▶️ How to Run
+
+```bash
+python run.py
+```
+
+Enter a date and time when prompted:
+
+```
+Enter (dd/mm/yyyy hh:mm), Example: 01/01/2026 17:00
+```
+
+---
+
+## ⚙️ What the Script Does
+
+* Loads electricity price data from Google Sheets
+* Converts:
+
+  * Prices → numeric values
+  * Dates → datetime format
+* Searches for a matching date/time
+* Displays:
+
+  * Selected price (if found)
+  * Cheapest price
+  * Most expensive price
+  * Average price
+* Writes results back to the Google Sheet
+
+---
+
+## 📤 Output
+
+The script prints results in the terminal and updates the Google Sheet:
+
+* **Range:** `F2:I5`
+
+**Includes:**
+
+* Cheapest price
+* Most expensive price
+* Average price
+
+---
+
+## ⚠️ Error Handling
+
+* Invalid date format → prompts user to re-enter
+* Missing or invalid data handled using pandas
+* Non-numeric values safely converted
+
+---
+
+## 🚀 Future Enhancements
+
+* Add charts and data visualization
+* Build a web interface
+* Filter by date ranges or weeks
+* Integrate live electricity price APIs
+
+---
+
+## 🛠️ Technologies Used
+
+* Python
+* pandas
+* Google Sheets API
+
+---
+
+## 🧪 Testing & Validation
+
+* Passed through PEP8 Linter with no issues
+* Tested locally in terminal
+* Verified Google Sheets integration
+
+---
+
+## 📂 Credits
+
+* MDN Web Docs
+* Traversy Media
+* W3Schools
