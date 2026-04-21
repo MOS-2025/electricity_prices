@@ -134,6 +134,7 @@ The script prints results in the terminal and updates the Google Sheet:
 ## 🧪 Testing & Validation
 
 * Passed through PEP8 Linter with no issues
+* <img width="1886" height="843" alt="image" src="https://github.com/user-attachments/assets/6571c741-c2b2-44c5-aeab-30fa7dc6a959" />
 * Tested locally in terminal
 * Verified Google Sheets integration
 
