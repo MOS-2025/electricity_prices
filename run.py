@@ -1,10 +1,12 @@
-print("Welcome to the electricity prices checker, Data for January to April 2026 can be viewed to determine the cheapest and most expensive electricity prices !")
 import gspread
 from google.oauth2.service_account import Credentials
+#from matplotlib.pylab import mean
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import json
+
+print("Welcome to the electricity prices checker!")
 
 
 SCOPE = [
@@ -24,15 +26,11 @@ data = Sheet1.get_all_values()
 
 df = pd.DataFrame(data[1:], columns=data[0])
 
-
-
 df["Price perKwhour"] = pd.to_numeric(df["Price perKwhour"], errors="coerce")
 df["Date and Time"] = pd.to_datetime(df["Date and Time"], dayfirst=True, errors="coerce")
 
-#print(df)
-
 # User input
-user_input = input("Enter a date and time (dd/mm/yyyy hh:mm), for example 01/01/2026 17:00: ")
+user_input = input("Enter (dd/mm/yyyy hh:mm),Example 01/01/2026 17:00: ")
 
 try:
     selected_datetime = pd.to_datetime(user_input, format="%d/%m/%Y %H:%M")
@@ -47,15 +45,19 @@ try:
         print("\nNo data found for that date and time.")
 
 except ValueError:
-    print("\nInvalid format. Please enter the date and time as dd/mm/yyyy hh:mm")
+    print("\nInvalid format. Enter the date and time as dd/mm/yyyy hh:mm")
 
 
 # Cheapest and most expensive
 cheapest = df.loc[df["Price perKwhour"].idxmin()]
 most_expensive = df.loc[df["Price perKwhour"].idxmax()]
+average = df["Price perKwhour"].mean()
 
 print("\nCheapest electricity price:")
 print(cheapest[["Week No", "Date and Time", "Price perKwhour"]].to_string())
 
 print("\nMost expensive electricity price:")
 print(most_expensive[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+
+print("\nAverage electricity price:")
+print(average)
