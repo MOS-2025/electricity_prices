@@ -33,7 +33,8 @@ def get_user_input():
     ).strip()
 
 
-print("Welcome to the electricity prices checker!")
+def main():
+    print("Welcome to the electricity prices checker!")
 
 
 SCOPE = [
@@ -132,3 +133,6 @@ results = [
 Sheet1.update(range_name="F2:I5", values=results)
 
 print("\nResults have been written back to the Google Sheet.")
+
+if __name__ == "__main__":
+    main()
