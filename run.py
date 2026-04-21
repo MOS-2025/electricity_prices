@@ -53,7 +53,9 @@ print("\nCheapest electricity price:")
 print(cheapest[["Week No", "Date and Time", "Price perKwhour"]].to_string())
 
 print("\nMost expensive electricity price:")
-print(most_expensive[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+print(most_expensive[
+    ["Week No", "Date and Time", "Price perKwhour"]
+].to_string())
 
 print("\nAverage electricity price:")
 print(average)
