@@ -23,6 +23,7 @@ def find_price(df, selected_datetime):
     """
     return df[df["Date and Time"] == selected_datetime]
 
+
 def get_user_input():
     """
     Get user input and remove extra spaces.
@@ -30,6 +31,7 @@ def get_user_input():
     return input(
         "Enter (dd/mm/yyyy hh:mm),Example 01/01/2026 17:00: "
     ).strip()
+
 
 print("Welcome to the electricity prices checker!")
 
@@ -48,6 +50,16 @@ SHEET = GSPREAD_CLIENT.open('Electricity_Prices')
 Sheet1 = SHEET.worksheet('Sheet1')
 data = Sheet1.get_all_values()
 
+if not data or len(data) < 2:
+    print("Error: The Google Sheet is empty or missing data.")
+    exit()
+
+required_columns = ["Week No", "Date and Time", "Price perKwhour"]
+
+for column in required_columns:
+    if column not in data[0]:
+        print(f"Error: Missing required column: {column}")
+        exit()
 
 df = pd.DataFrame(data[1:], columns=data[0])
 
