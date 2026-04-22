@@ -29,7 +29,7 @@ def get_user_input():
     Get user input and remove extra spaces.
     """
     return input(
-        "Prices trackeed from 01/01/2026 00:30 to 07/01/2026 23:30 \n"
+        "Prices tracked from 01/01/2026 00:30 to 07/01/2026 23:30 \n"
         "What date and time do you want to check? \n"
         "Data recorded every 30 minutes, on hour and half-hour \n"
         "Required format: dd/mm/yyyy hh:mm: "
