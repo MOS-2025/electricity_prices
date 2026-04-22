@@ -2,7 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
 
-
 def calculate_statistics(df):
     """
     Calculate cheapest, most expensive, and average electricity price.
@@ -16,13 +15,11 @@ def calculate_statistics(df):
 
     return cheapest, most_expensive, average
 
-
 def find_price(df, selected_datetime):
     """
     Find electricity price for a specific date and time.
     """
     return df[df["Date and Time"] == selected_datetime]
-
 
 def get_user_input():
     """
@@ -31,7 +28,6 @@ def get_user_input():
     return input(
         "Enter (dd/mm/yyyy hh:mm),Example 01/01/2026 17:00: "
     ).strip()
-
 
 def main():
     print("Welcome to the electricity prices checker!")
@@ -90,6 +86,7 @@ def main():
 
     try:
         cheapest, most_expensive, average = calculate_statistics(df)
+        
     except ValueError as e:
         print(e)
         exit()
@@ -125,7 +122,8 @@ def main():
         print("\nAverage electricity price:")
         print(average)
 
-    # Send result back to Google Sheet
+
+    # Send selected result back to Google Sheet
     cheapest_datetime = (
         cheapest["Date and Time"].strftime("%d/%m/%Y %H:%M")
         if pd.notnull(cheapest["Date and Time"]) else ""
@@ -134,25 +132,37 @@ def main():
         most_expensive["Date and Time"].strftime("%d/%m/%Y %H:%M")
         if pd.notnull(most_expensive["Date and Time"]) else ""
     )
-    results = [
-        ["Metric", "Week No", "Date and Time", "Price perKwhour"],
-        [
+
+    results = [["Metric", "Week No", "Date and Time", "Price perKwhour"]]
+
+    if choice in ("", "all"):
+        results.append([
             "Cheapest",
             cheapest["Week No"],
             cheapest_datetime,
             cheapest["Price perKwhour"]
-        ],
-        [
+        ])
+        results.append([
             "Most Expensive",
             most_expensive["Week No"],
             most_expensive_datetime,
             most_expensive["Price perKwhour"]
-        ],
-        ["Average", "", "", average]
-    ]
-    Sheet1.update(range_name="F2:I5", values=results)
+        ])
+        results.append(["Average", "", "", average])
 
-    print("\nResults have been written back to the Google Sheet.")
+
+
+    else:
+        print("\nInvalid choice. Nothing written to Google Sheet.")
+        return
+
+    # Optional: clear old results first so stale rows don't remain
+    Sheet1.batch_clear(["F2:I5"])
+
+    end_row = len(results) + 1
+    Sheet1.update(range_name=f"F2:I{end_row}", values=results)
+
+    print("\nSelected result has been written back to the Google Sheet.")
 
 
 if __name__ == "__main__":
