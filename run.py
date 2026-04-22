@@ -2,6 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
 
+
 def calculate_statistics(df):
     """
     Calculate cheapest, most expensive, and average electricity price.
@@ -15,11 +16,13 @@ def calculate_statistics(df):
 
     return cheapest, most_expensive, average
 
+
 def find_price(df, selected_datetime):
     """
     Find electricity price for a specific date and time.
     """
     return df[df["Date and Time"] == selected_datetime]
+
 
 def get_user_input():
     """
@@ -28,6 +31,7 @@ def get_user_input():
     return input(
         "Enter (dd/mm/yyyy hh:mm),Example 01/01/2026 17:00: "
     ).strip()
+
 
 def main():
     print("Welcome to the electricity prices checker!")
@@ -86,7 +90,7 @@ def main():
 
     try:
         cheapest, most_expensive, average = calculate_statistics(df)
-        
+
     except ValueError as e:
         print(e)
         exit()
@@ -121,7 +125,6 @@ def main():
     elif choice == "a":
         print("\nAverage electricity price:")
         print(average)
-
 
     # Send selected result back to Google Sheet
     cheapest_datetime = (
