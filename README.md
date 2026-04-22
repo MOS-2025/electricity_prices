@@ -26,8 +26,8 @@ The data is collected every 30 minutes starting on 01/01/2026 00:30 until 01/07/
 
 ## 🔗 Live Project
 
-* **Live Site:** https://mos-2025.github.io/
-* **Repository:** https://github.com/MOS-2025/
+* **Repository:** https://github.com/MOS-2025/electricity_prices
+* **Heroku** https://dashboard.heroku.com/apps/electricity-prices
 
 * <img width="1402" height="837" alt="image" src="https://github.com/user-attachments/assets/447f965c-da04-467e-8b9c-e56c048f2138" />
 
