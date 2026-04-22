@@ -63,7 +63,9 @@ def main():
 
     df = pd.DataFrame(data[1:], columns=data[0])
 
-    df["Price perKwhour"] = pd.to_numeric(df["Price perKwhour"], errors="coerce")
+    df["Price perKwhour"] = pd.to_numeric(
+        df["Price perKwhour"], errors="coerce"
+    )
     df["Date and Time"] = pd.to_datetime(
         df["Date and Time"], dayfirst=True, errors="coerce"
     )
@@ -92,16 +94,31 @@ def main():
         print(e)
         exit()
 
-    print("\nCheapest electricity price:")
-    print(cheapest[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+    choice = input(
+        "\nPress Enter for all, or type c (cheapest), m (most expensive), a (average): "
+    ).strip().lower()
 
-    print("\nMost expensive electricity price:")
-    print(most_expensive[
-        ["Week No", "Date and Time", "Price perKwhour"]
-    ].to_string())
+    if choice in ("", "all"):
+        print("\nCheapest electricity price:")
+        print(cheapest[["Week No", "Date and Time", "Price perKwhour"]].to_string())
 
-    print("\nAverage electricity price:")
-    print(average)
+        print("\nMost expensive electricity price:")
+        print(most_expensive[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+
+        print("\nAverage electricity price:")
+        print(average)
+
+    elif choice == "c":
+        print("\nCheapest electricity price:")
+        print(cheapest[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+
+    elif choice == "m":
+        print("\nMost expensive electricity price:")
+        print(most_expensive[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+
+    elif choice == "a":
+        print("\nAverage electricity price:")
+        print(average)
 
     # Send result back to Google Sheet
     cheapest_datetime = (
