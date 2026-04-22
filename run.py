@@ -95,26 +95,31 @@ def main():
         exit()
 
     choice = input(
-        "\nPress Enter for all, or type c (cheapest), m (most expensive), a (average): "
+        "\nPress Enter for all, or type c (cheapest), "
+        "m (most expensive), a (average): "
     ).strip().lower()
 
     if choice in ("", "all"):
         print("\nCheapest electricity price:")
-        print(cheapest[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+        cheapest_cols = ["Week No", "Date and Time", "Price perKwhour"]
+        print(cheapest[cheapest_cols].to_string())
 
         print("\nMost expensive electricity price:")
-        print(most_expensive[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+        most_expensive_cols = ["Week No", "Date and Time", "Price perKwhour"]
+        print(most_expensive[most_expensive_cols].to_string())
 
         print("\nAverage electricity price:")
         print(average)
 
     elif choice == "c":
         print("\nCheapest electricity price:")
-        print(cheapest[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+        cheapest_cols = ["Week No", "Date and Time", "Price perKwhour"]
+        print(cheapest[cheapest_cols].to_string())
 
     elif choice == "m":
         print("\nMost expensive electricity price:")
-        print(most_expensive[["Week No", "Date and Time", "Price perKwhour"]].to_string())
+        most_expensive_cols = ["Week No", "Date and Time", "Price perKwhour"]
+        print(most_expensive[most_expensive_cols].to_string())
 
     elif choice == "a":
         print("\nAverage electricity price:")
