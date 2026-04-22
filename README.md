@@ -38,7 +38,8 @@ The data is collected every 30 minutes starting on 01/01/2026 00:30 until 01/07/
 ## 🔗 Flow Chart
 
 
-* <img width="596" height="895" alt="image" src="https://github.com/user-attachments/assets/5ceccd57-5166-4d8f-9c7a-beac10a0ada4" />
+<img width="632" height="902" alt="image" src="https://github.com/user-attachments/assets/47fcd6f8-e7bc-41b6-8b50-4f46e92712b8" />
+
 
 
 ---
@@ -125,6 +126,8 @@ The script prints results in the terminal and updates the Google Sheet:
 * Invalid date format → prompts user to re-enter
 * Missing or invalid data handled using pandas
 * Non-numeric values safely converted
+
+<img width="1692" height="587" alt="image" src="https://github.com/user-attachments/assets/afc2806e-ee33-4ef4-8184-8b85213c8a77" />
 
 ---
 
