@@ -29,7 +29,8 @@ def get_user_input():
     Get user input and remove extra spaces.
     """
     return input(
-        "Enter (dd/mm/yyyy hh:mm),Example 01/01/2026 17:00: "
+        "Range 01/01/2026 00:30 to 07/01/2026 23:30 ! Data recorded every 30 minutes:\n"
+        "Required format: dd/mm/yyyy hh:mm: "
     ).strip()
 
 
@@ -101,6 +102,7 @@ def main():
         exit()
     # Ask user what result they want to see
     choice = input(
+        "Statistics calculated! What would you like to see? "
         "\nPress Enter for all, or type c (cheapest), "
         "m (most expensive), a (average): "
     ).strip().lower()
