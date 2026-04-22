@@ -121,6 +121,13 @@ The script prints results in the terminal and updates the Google Sheet:
 
 ---
 
+## GitHub & Commits
+  
+1.The project was deployed to github from the initial commits.
+2. All commits were clearly commented throughout the project.
+
+---
+
 ## 🚀 Deployment (Heroku)
 
 Follow these steps were completed to deploy this project to Heroku.
