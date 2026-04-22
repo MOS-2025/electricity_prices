@@ -126,6 +126,8 @@ The script prints results in the terminal and updates the Google Sheet:
 * Missing or invalid data handled using pandas
 * Non-numeric values safely converted
 
+<img width="1692" height="587" alt="image" src="https://github.com/user-attachments/assets/afc2806e-ee33-4ef4-8184-8b85213c8a77" />
+
 ---
 
 ## 🚀 Future Enhancements
