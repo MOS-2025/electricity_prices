@@ -145,11 +145,11 @@ heroku logs --tail
 * Invalid date format → prompts user to re-enter
 * Missing or invalid data handled using pandas
 * Non-numeric values safely converted
-* No issues identified with Linter
+* Error message displayed if no data is present in worksheet.
 
 
+<img width="1648" height="557" alt="image" src="https://github.com/user-attachments/assets/50262224-861f-44a6-8d91-3335847f2b80" />
 
-<img width="1760" height="876" alt="image" src="https://github.com/user-attachments/assets/a2dc192b-17c0-4d10-9d0b-d37b204f529a" />
 
 
 
@@ -182,9 +182,11 @@ heroku logs --tail
 ## 🧪 Testing & Validation
 
 * Passed through PEP8 Linter with no issues
-* <img width="1886" height="843" alt="image" src="https://github.com/user-attachments/assets/6571c741-c2b2-44c5-aeab-30fa7dc6a959" />
 * Tested locally in terminal
 * Verified Google Sheets integration
+
+* <img width="1760" height="876" alt="image" src="https://github.com/user-attachments/assets/f459a4d1-2b5b-4d2b-8a2d-1fa3cadb1314" />
+
 
 ---
 
