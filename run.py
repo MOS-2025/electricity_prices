@@ -29,14 +29,16 @@ def get_user_input():
     Get user input and remove extra spaces.
     """
     return input(
-        "Range 01/01/2026 00:30 to 07/01/2026 23:30 ! Data recorded every 30 minutes:\n"
+        "Prices trackeed from 01/01/2026 00:30 to 07/01/2026 23:30 \n"
+        "What date and time do you want to check? \n"
+        "Data recorded every 30 minutes, on hour and half-hour \n"
         "Required format: dd/mm/yyyy hh:mm: "
     ).strip()
 
 
 def main():
     # Displays welcome message
-    print("Welcome to the electricity prices checker!")
+    print("Welcome to the electricity prices tracker!")
     # Define the scope and credentials for Google Sheets API
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
@@ -102,7 +104,7 @@ def main():
         exit()
     # Ask user what result they want to see
     choice = input(
-        "Statistics calculated! What would you like to see? "
+        "Display Statistics: What would you like to see? "
         "\nPress Enter for all, or type c (cheapest), "
         "m (most expensive), a (average): "
     ).strip().lower()
@@ -180,8 +182,8 @@ def main():
         results.append(["Average", "", "", average])
 
     else:
-        # if invalid input, stop before writing to Google Sheet
-        print("\nInvalid choice. Nothing written to Google Sheet.")
+        # if invalid input, stop before recording to Google Sheet
+        print("\nInvalid choice. Nothing recorded to Google Sheet.")
         return
 
     # Clear old results first so stale rows don't remain
@@ -191,7 +193,7 @@ def main():
     # Write results to Google Sheet
     Sheet1.update(range_name=f"F2:I{end_row}", values=results)
 
-    print("\nSelected result has been written back to the Google Sheet.")
+    print("\nSelected result has been recorded to Google Sheet.")
 
 
 if __name__ == "__main__":
