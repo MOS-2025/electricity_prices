@@ -150,7 +150,24 @@ def main():
         ])
         results.append(["Average", "", "", average])
 
+    elif choice == "c":
+        results.append([
+            "Cheapest",
+            cheapest["Week No"],
+            cheapest_datetime,
+            cheapest["Price perKwhour"]
+        ])
 
+    elif choice == "m":
+        results.append([
+            "Most Expensive",
+            most_expensive["Week No"],
+            most_expensive_datetime,
+            most_expensive["Price perKwhour"]
+        ])
+
+    elif choice == "a":
+        results.append(["Average", "", "", average])
 
     else:
         print("\nInvalid choice. Nothing written to Google Sheet.")
