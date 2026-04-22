@@ -145,8 +145,12 @@ heroku logs --tail
 * Invalid date format → prompts user to re-enter
 * Missing or invalid data handled using pandas
 * Non-numeric values safely converted
+* No issues identified with Linter
 
-<img width="1693" height="598" alt="image" src="https://github.com/user-attachments/assets/c005cf30-23ed-4aa1-90d4-6b347a7c8ce4" />
+
+
+<img width="1760" height="876" alt="image" src="https://github.com/user-attachments/assets/a2dc192b-17c0-4d10-9d0b-d37b204f529a" />
+
 
 
 ---
