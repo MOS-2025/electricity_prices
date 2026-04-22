@@ -34,8 +34,9 @@ def get_user_input():
 
 
 def main():
+    # Displays welcome message
     print("Welcome to the electricity prices checker!")
-
+    # Define the scope and credentials for Google Sheets API
     SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive.file",
@@ -49,11 +50,11 @@ def main():
 
     Sheet1 = SHEET.worksheet('Sheet1')
     data = Sheet1.get_all_values()
-
+    # Check if sheet is empty or missing data
     if not data or len(data) < 2:
         print("Error: The Google Sheet is empty or missing data.")
         exit()
-
+    # Define required column names and check if they exist in the data
     required_columns = ["Week No", "Date and Time", "Price perKwhour"]
 
     for column in required_columns:
@@ -62,10 +63,11 @@ def main():
             exit()
 
     df = pd.DataFrame(data[1:], columns=data[0])
-
+    # Convert price column to numeric, coercing errors to NaN
     df["Price perKwhour"] = pd.to_numeric(
         df["Price perKwhour"], errors="coerce"
     )
+    # Convert date column to datetime, coercing errors to NaT
     df["Date and Time"] = pd.to_datetime(
         df["Date and Time"], dayfirst=True, errors="coerce"
     )
@@ -74,6 +76,7 @@ def main():
     user_input = get_user_input()
 
     try:
+        # Convert user input into datetime object
         selected_datetime = pd.to_datetime(user_input, format="%d/%m/%Y %H:%M")
 
         # Find matching row
@@ -86,20 +89,22 @@ def main():
             print("\nNo data found for that date and time.")
 
     except ValueError:
+        # Handle incorrect date format
         print("\nInvalid format. Enter the date and time as dd/mm/yyyy hh:mm")
 
     try:
         cheapest, most_expensive, average = calculate_statistics(df)
 
     except ValueError as e:
+        # Handle missing or invalid price data
         print(e)
         exit()
-
+    # Ask user what result they want to see
     choice = input(
         "\nPress Enter for all, or type c (cheapest), "
         "m (most expensive), a (average): "
     ).strip().lower()
-
+    # Shows all results if user presses Enter or types "all" (case-insensitive)
     if choice in ("", "all"):
         print("\nCheapest electricity price:")
         cheapest_cols = ["Week No", "Date and Time", "Price perKwhour"]
@@ -111,17 +116,17 @@ def main():
 
         print("\nAverage electricity price:")
         print(average)
-
+    # Shows only the cheapest price if user selects "c"
     elif choice == "c":
         print("\nCheapest electricity price:")
         cheapest_cols = ["Week No", "Date and Time", "Price perKwhour"]
         print(cheapest[cheapest_cols].to_string())
-
+    # Shows only the most expensive price if user selects "m"
     elif choice == "m":
         print("\nMost expensive electricity price:")
         most_expensive_cols = ["Week No", "Date and Time", "Price perKwhour"]
         print(most_expensive[most_expensive_cols].to_string())
-
+    # Shows only average price if user selects "a"
     elif choice == "a":
         print("\nAverage electricity price:")
         print(average)
@@ -135,7 +140,7 @@ def main():
         most_expensive["Date and Time"].strftime("%d/%m/%Y %H:%M")
         if pd.notnull(most_expensive["Date and Time"]) else ""
     )
-
+    # Prepare results for Google Sheet
     results = [["Metric", "Week No", "Date and Time", "Price perKwhour"]]
 
     if choice in ("", "all"):
@@ -173,13 +178,15 @@ def main():
         results.append(["Average", "", "", average])
 
     else:
+        # if invalid input, stop before writing to Google Sheet
         print("\nInvalid choice. Nothing written to Google Sheet.")
         return
 
-    # Optional: clear old results first so stale rows don't remain
+    # Clear old results first so stale rows don't remain
     Sheet1.batch_clear(["F2:I5"])
 
     end_row = len(results) + 1
+    # Write results to Google Sheet
     Sheet1.update(range_name=f"F2:I{end_row}", values=results)
 
     print("\nSelected result has been written back to the Google Sheet.")
