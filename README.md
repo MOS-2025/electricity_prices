@@ -20,7 +20,7 @@ The data is collected every 30 minutes starting on 01/01/2026 00:30 until 01/07/
   * Cheapest price
   * Most expensive price
   * Average price
-* Writes results back to the Google Sheet
+* Selected statistics displayed on linked Google sheet
 
 ---
 
@@ -127,7 +127,8 @@ The script prints results in the terminal and updates the Google Sheet:
 * Missing or invalid data handled using pandas
 * Non-numeric values safely converted
 
-<img width="1692" height="587" alt="image" src="https://github.com/user-attachments/assets/afc2806e-ee33-4ef4-8184-8b85213c8a77" />
+<img width="1693" height="598" alt="image" src="https://github.com/user-attachments/assets/c005cf30-23ed-4aa1-90d4-6b347a7c8ce4" />
+
 
 ---
 
@@ -137,7 +138,7 @@ The script prints results in the terminal and updates the Google Sheet:
 * Build a web interface
 * Filter by date ranges or weeks
 * Integrate live electricity price APIs
-* Upload CSV file with data for entire
+* Upload CSV file with data for entire calendar year (currently 1 week's data recorded)
 * Compare cheapest prices against peak wind generation
 
 ---
