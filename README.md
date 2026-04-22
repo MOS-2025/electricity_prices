@@ -1,4 +1,4 @@
-# ⚡ Electricity Prices Checker
+# ⚡ Electricity Prices Tracker
 
 A Python-based command-line application that connects to a Google Sheet to analyze electricity prices.
 It allows users to query electricity prices for a specific date and time, and calculates key insights such as the cheapest, most expensive, and average prices.
@@ -121,6 +121,25 @@ The script prints results in the terminal and updates the Google Sheet:
 
 ---
 
+## 🚀 Deployment (Heroku)
+
+Follow these steps were completed to deploy this project to Heroku.
+
+1. Prerequisites
+* Install Git
+* Install Heroku CLI
+* Have a Heroku account
+2. Prepare your project
+3. Initialize Git
+4. Create Heroku app
+5. Deploy
+6. Open the app
+7. (Optional) View logs
+heroku logs --tail
+
+* <img width="1775" height="826" alt="image" src="https://github.com/user-attachments/assets/9dc1e2b1-e272-46d7-a37d-cf757c7a29e1" />
+---
+
 ## ⚠️ Error Handling
 
 * Invalid date format → prompts user to re-enter
@@ -148,6 +167,11 @@ The script prints results in the terminal and updates the Google Sheet:
 * Python
 * pandas
 * Google Sheets API
+* Heroku
+* Heroku CLI
+* Git
+* VS Code
+* Lucid
 
 ---
 
